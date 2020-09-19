@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()         /*this is index method, we are not taking any paramter and hence returning the view of home. now lets go to see the home view. */
     {
         return view('home');
     }
