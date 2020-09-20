@@ -31,9 +31,9 @@
                         <td>{{ $blog->published_at }}</td>
                         <td>
                             <div class="btn-group">
-                                    <a type="button" href="" data-toggle="tooltip" title="Update" class="btn btn-success btn-sm"><i class="fa fa-pencil fa-md"></i></a>
-                                    <a type="button" href="" data-toggle="tooltip" title="Delete" class="btn btn-danger  btn-sm"><i class="fa fa-trash fa-md" ></i></a>
-                                    <a type="button" href="" data-toggle="tooltip" title="View" class="btn btn-warning  btn-sm"><i class="fa fa-eye fa-md"></i></a>
+                                <a type="button" href="{{ route('blog_detail', $blog->id) }}" data-toggle="tooltip" title="View" class="btn btn-warning  btn-sm"><i class="fa fa-eye fa-md"></i></a>
+                                <a type="button" href="" data-toggle="tooltip" title="Update" class="btn btn-success btn-sm"><i class="fa fa-pencil fa-md"></i></a>
+                                <a type="button" href="" data-toggle="tooltip" title="Delete" class="btn btn-danger  btn-sm"><i class="fa fa-trash fa-md" ></i></a>
                             </div>
                         </td>
                     </tr>
