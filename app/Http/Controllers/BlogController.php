@@ -12,7 +12,7 @@ class BlogController extends Controller         /*every class extenda the Contro
 {
 
     public function __construct(){
-        $this->middleware('check_blog_exist')->only(['detail', 'edit']);
+        $this->middleware('check_blog_exist')->only(['detail', 'edit', 'delete']);
     }
 
     public function index(){        /*this method will be called, if user will hit that route. */
@@ -26,7 +26,8 @@ class BlogController extends Controller         /*every class extenda the Contro
     public function list(Request $request){         /*defined a list method here, and request is coming from the user. */
         $data = [];             /*defined a blank data array. */
         $data["blogs"] = Blog::self()->get();           /*Here Blog is the modal, and self is the scope that we have defined in the Blog.php. lets go to see whats doing that method. */
-        return view("blog.blog_list", $data);           /*after all these,we are returning the view if blog_list.blade.php along with the data. Now lets move to the view directory. */
+        return view("blog.blog_list", $data);          
+         /*after all these,we are returning the view if blog_list.blade.php along with the data. Now lets move to the view directory. */
     }
 
     public function detail(Request $request, $id){
@@ -83,6 +84,7 @@ class BlogController extends Controller         /*every class extenda the Contro
 
         $data["blog"] = Blog::find($id);
 
+        
         try{
             if($request->isMethod("post")){
                 
@@ -93,6 +95,7 @@ class BlogController extends Controller         /*every class extenda the Contro
                 $published_at = $request->input("published_at");
 
                 $blog = Blog::find($id);
+                
                 $blog->title = $title;
                 $blog->description = $description;
                 $blog->tags = $tags;
@@ -108,5 +111,10 @@ class BlogController extends Controller         /*every class extenda the Contro
         }
 
         return view("blog.blog_edit",$data);
+    }
+
+    public function delete(Request $request,$id){
+        Blog::find($id)->delete();
+        return redirect(route("blog_list"));
     }
 }

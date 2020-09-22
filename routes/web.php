@@ -30,7 +30,9 @@ Route::group(['middleware' => ['auth']], function () {          /*we are using g
     Route::get("/blog_detail/{id}", "BlogController@detail")->name("blog_detail");         /*If user will hit that route, then first it will call BlogController and then list method will be called. And then simply we are naming it to blog_list. */
     Route::get("/blog_add", "BlogController@add")->name("blog_add");        /*adding the blog is both get and post type route. so if the user will hit that BlogController route, then add method will be called . and then simply we are naming it tooo blog_add. Now Lets move toward that page. */
     Route::post("/blog_add", "BlogController@add");
+
     Route::get('blog_edit/{id}', 'BlogController@edit')->name("blog_edit");
     Route::post('blog_edit/{id}', 'BlogController@edit');
+    
     Route::get('blog_delete/{id}','BlogController@delete')->name("blog_delete");
 });

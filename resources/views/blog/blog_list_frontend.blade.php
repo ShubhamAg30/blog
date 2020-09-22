@@ -10,8 +10,11 @@
                 @foreach($blogs as $blog)           <!--if the count is not 0 , then we are looping through it, and showing the each blog in the "localhost/" route. each $blog will contain information about the each $blog.-->
                 
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ $blog->title }}</div>     <!--we are printing the title of the each blog.-->
-
+                    <div class="panel-heading">{{ $blog->title }}
+                    @if($blog->user_id == Auth::id())
+                        <a href="{{ route('blog_edit',$blog->id) }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-pencil fa-lg"></i></a>
+                    @endif
+                    </div>     <!--we are printing the title of the each blog.-->
                     <div class="panel-body">
                         {{ $blog->description }}        <!--showing the correspoding description related to that blog.-->
                         @if($blog->tags)        <!--if their exists tag of the $blog, then we are simply printing it else will be not there.-->
